@@ -1,19 +1,179 @@
 @import "tailwindcss";
+@plugin "daisyui";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ==========================================
+   1. BRAND THEME (DaisyUI Theme System)
+   ========================================== */
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+
+  /* Primary Accent: Dev Red / Crimson */
+  --color-primary: #FF3811;
+  --color-primary-content: #FFFFFF;
+
+  /* Secondary Accent: Deep Slate */
+  --color-secondary: #1E293B;
+  --color-secondary-content: #FFFFFF;
+
+  /* Base Layout Colors */
+  --color-base-100: #FFFFFF;     /* Page Background */
+  --color-base-200: #F8FAFC;     /* Card / Section Background */
+  --color-base-300: #E2E8F0;     /* Border / Divider Colors */
+  --color-base-content: #0F172A; /* Default Text Color */
+
+  /* Neutral Dark Scale */
+  --color-dark-01: #151515;
+  --color-dark-02: #444444;
+  --color-dark-03: #737373;
+  --color-dark-07: #F3F3F3;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ==========================================
+   2. TAILWIND DESIGN SYSTEM EXTENSION (@theme)
+   ========================================== */
+@theme {
+  --color-dark-1: var(--color-dark-01);
+  --color-dark-2: var(--color-dark-02);
+  --color-dark-3: var(--color-dark-03);
+  --color-dark-7: var(--color-dark-07);
+
+  --font-poppins: var(--font-poppins), system-ui, sans-serif;
 }
 
-body {
-  background: var(--background); 
-  color: var(--foreground);
-  font-family: var(--font-poppins), Arial, Helvetica, sans-serif;
+/* ==========================================
+   3. BASE & RESET STYLES
+   ========================================== */
+@layer base {
+  body {
+    background-color: var(--color-base-100);
+    color: var(--color-base-content);
+    font-family: var(--font-poppins);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+  }
+
+  main {
+    flex: 1;
+  }
+}
+
+/* ==========================================
+   4. GLOBAL LAYOUT & SPACING UTILITIES
+   ========================================== */
+
+/* Standard Responsive Max-Width Container */
+.container-custom {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;  /* 16px */
+  padding-right: 1rem; /* 16px */
+}
+
+@media (min-width: 640px) {
+  .container-custom {
+    padding-left: 1.5rem;  /* 24px */
+    padding-right: 1.5rem; /* 24px */
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-custom {
+    padding-left: 2rem;  /* 32px */
+    padding-right: 2rem; /* 32px */
+  }
+}
+
+/* Standard Section Vertical Spacing */
+.section-padding {
+  padding-top: 3.5rem;
+  padding-bottom: 3.5rem;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+}
+
+/* Page Standard Wrapper */
+.page-wrapper {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 2rem;
+  padding-bottom: 3rem;
+}
+
+/* Common Flex Helpers */
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ==========================================
+   5. NEW ADDITIONS: TYPOGRAPHY, CARDS & UI UTILITIES
+   ========================================== */
+
+/* Typography Utilities */
+.heading-primary {
+  font-size: 2.25rem; /* 36px */
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--color-dark-01);
+}
+
+@media (min-width: 768px) {
+  .heading-primary {
+    font-size: 3rem; /* 48px */
+  }
+}
+
+.heading-secondary {
+  font-size: 1.5rem; /* 24px */
+  font-weight: 600;
+  color: var(--color-dark-01);
+}
+
+.text-muted {
+  color: var(--color-dark-03);
+  font-size: 0.875rem; /* 14px */
+}
+
+/* Card Styling Utility */
+.card-custom {
+  background-color: var(--color-base-100);
+  border: 1px solid var(--color-base-300);
+  border-radius: 0.75rem; /* 12px */
+  padding: 1.5rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.card-custom:hover {
+  border-color: rgba(255, 56, 17, 0.3);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+}
+
+/* Header Sticky Utility */
+.header-sticky {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  width: 100%;
+  border-bottom: 1px solid var(--color-base-300);
+  background-color: rgb(255 255 255 / 0.85);
+  backdrop-filter: blur(12px);
 }
