@@ -16,7 +16,7 @@ const poppins = Poppins({
 
 export const metadata = {
   title: "Dev Story",
-  description: "On the way to master in NextJS | Md. Toyob Uddin Hridoy",
+  description: "An app for showing developer story around the world ! On the way to master in NextJS | Md. Toyob Uddin Hridoy",
 };
 
 export default function RootLayout({ children }) {
