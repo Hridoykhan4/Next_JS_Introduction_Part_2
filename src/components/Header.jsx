@@ -36,6 +36,8 @@ const Header = () => {
 
     if (pathname.startsWith('/dashboard')) return null;
 
+    // if(pathname.includes('dashboard')) return null
+
     return (
         <header className="header-sticky">
             <div className="container-custom flex h-16 items-center justify-between">
