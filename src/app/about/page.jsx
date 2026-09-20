@@ -1,8 +1,14 @@
+import Link from "next/link";
+import Title from "../../components/Title";
+
 export default function AboutPage() {
     return (
-        <div className="container-custom py-10">
-            <h1 className="text-2xl font-bold text-dark-1">About Us</h1>
-            <p className="text-dark-3">Senior developer level clean setup!</p>
+        <div>
+            <Title>About Us</Title>
+            <nav className="space-x-5 container-custom py-6">
+                <Link href={'/about/contact'}>Contact</Link>
+                <Link href={'/about/teams'}>Teams</Link>
+            </nav>
         </div>
     );
 }
